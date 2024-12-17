@@ -32,6 +32,13 @@ function deepcopy(obj) {
       return obj
   }
 
+  if(Array.isArray(obj)){
+      const copy = []
+      for(let i=0; i< obj.length; i++) {
+          copy[i] = deepcopy(obj[i])
+      }
+      return copy
+  }
 
   const copy = {}
   for(let key in obj) {
