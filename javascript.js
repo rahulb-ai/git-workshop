@@ -25,3 +25,19 @@ const groupByage = groupBy(people, (person=>person.age))
 
 
 //TO-DO : Create deep copy functions for polyfill 
+
+// Create function for deep copy 
+function deepcopy(obj) {
+  if(obj === null || typeof obj !== undefined) {
+      return obj
+  }
+
+
+  const copy = {}
+  for(let key in obj) {
+      if(obj.hasOwnProperty(key)){
+          copy[key] = deepcopy(obj[key]) // recursively copy each property
+      }
+  }
+  return copy
+}
