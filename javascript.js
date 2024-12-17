@@ -22,3 +22,6 @@ const people = [
 const numbers = [1, 2, 3, 4, 5, 6];
 const groupByNumber = groupBy(numbers, (num)=>(num%2 ===0 ?'even':'odd'))
 const groupByage = groupBy(people, (person=>person.age))
+
+
+//TO-DO : Create deep copy functions for polyfill 
