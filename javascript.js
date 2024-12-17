@@ -31,13 +31,6 @@ function deepcopy(obj) {
   if(obj === null || typeof obj !== undefined) {
       return obj
   }
-  const copy = {}
-  for(let key in obj) {
-      if(obj.hasOwnProperty(key)){
-          copy[key] = deepcopy(obj[key]) // recursively copy each property
-      }
-  }
-
   if(Array.isArray(obj)){
     const copy = []
     for(let i=0; i< obj.length; i++) {
@@ -45,6 +38,14 @@ function deepcopy(obj) {
     }
     return copy
 }
+  const copy = {}
+  for(let key in obj) {
+      if(obj.hasOwnProperty(key)){
+          copy[key] = deepcopy(obj[key]) // recursively copy each property
+      }
+  }
+
+
   return copy
 }
 
