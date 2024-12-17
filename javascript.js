@@ -31,20 +31,30 @@ function deepcopy(obj) {
   if(obj === null || typeof obj !== undefined) {
       return obj
   }
-
-  if(Array.isArray(obj)){
-      const copy = []
-      for(let i=0; i< obj.length; i++) {
-          copy[i] = deepcopy(obj[i])
-      }
-      return copy
-  }
-
   const copy = {}
   for(let key in obj) {
       if(obj.hasOwnProperty(key)){
           copy[key] = deepcopy(obj[key]) // recursively copy each property
       }
   }
+
+  if(Array.isArray(obj)){
+    const copy = []
+    for(let i=0; i< obj.length; i++) {
+        copy[i] = deepcopy(obj[i])
+    }
+    return copy
+}
   return copy
 }
+
+const original = {
+  name: "John",
+  age: 30,
+  hobbies: ["reading", "gaming"],
+  address: { city: "New York", zip: "10001" }
+};
+
+const copied = deepcopy(original);
+copied.address.city = "San Francisco";
+copied.hobbies.push("swimming");
